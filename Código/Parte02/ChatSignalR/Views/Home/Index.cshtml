@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ChatSignalR - cleytonferrari.com";
+}
+
+<script src="@Url.Content("~/Scripts/json2.js")" type="text/javascript"></script>
+<!-- Referencia para o SignalR -->
+<script src="@Url.Content("~/Scripts/jquery.signalR-0.5.0.js")" type="text/javascript" ></script>
+<!-- Neste script que é criado em tempo de execução que ocorre toda a mágica -->
+<script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        // Cria um proxy da nossa classe Chat do Servidor
+        var chat = $.connection.chat;
+        var grupoAtual = 'todos';
+
+        // Declare a function on the chat hub so the server can invoke it
+        chat.adicionarMensagem = function (message) {
+            $('#mensagens').append('<li>' + message + '</li>');
+        };
+
+        $("#btnEnviar").click(function () {
+            // Chama o metodo da classe Chat do servidor
+            chat.enviarMensagem($('#msg').val(), $('#grupo').val());
+        });
+
+        $('#grupo').change(function () {
+            chat.removeGrupo(grupoAtual);
+            grupoAtual = $('#grupo').val();
+            chat.adicionaGrupo(grupoAtual);
+        });
+
+        
+        // Inicia a conexão
+        $.connection.hub.start(function () {
+            chat.adicionaGrupo(grupoAtual);
+        });
+        
+    });
+</script>
+
+<div>
+    <label>
+        Mensagem
+        <input type="text" id="msg" />
+    </label>
+    <label>
+        grupo:
+        <select id="grupo" >
+            <option value="todos">Todos</option>
+            <option value="adm">Administradores</option>
+            <option value="usuario">Usuarios</option>
+        </select>
+    </label>
+    <input type="button" id="btnEnviar" value="Enviar" />
+    <ul id="mensagens"></ul>
+</div>

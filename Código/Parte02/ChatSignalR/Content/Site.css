@@ -1,0 +1,77 @@
+body
+{
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+h1
+{
+    display: block;
+    background-color: #3079ED;
+    text-align: center;
+    padding: 10px 0;
+    color: #FFF;
+}
+
+p
+{
+    text-align: right;
+    font-style: italic;
+}
+
+    p a
+    {
+        color: #3079ED;
+        text-decoration: none;
+    }
+
+        p a:hover
+        {
+            text-decoration: underline;
+        }
+
+#btnEnviar
+{
+    background-color: #4D90FE;
+    background-image: -webkit-gradient(linear,left top,left bottom,from( #4D90FE),to( #4787ED));
+    background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
+    background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
+    background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
+    background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
+    background-image: linear-gradient(top, #4D90FE, #4787ED);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
+    border: 1px solid #3079ED;
+    color: white !important;
+    padding: 5px 10px;
+    width: 80px;
+    font-size: 20px;
+}
+
+#msg
+{
+    color: #666;
+    width: 50%;
+    height: 28px;
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+ul
+{
+}
+
+    ul li
+    {
+        list-style: none;
+        padding: 10px 0;
+        border-bottom: 1px solid #bbb;
+        font-size: 2em;
+    }
+
+        ul li em
+        {
+            color: #aaa;
+            font-size: .55em;
+        }
